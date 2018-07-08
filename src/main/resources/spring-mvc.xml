@@ -11,6 +11,8 @@
     <!--启动注解式springMVC的驱动-->
     <mvc:annotation-driven/>
 
+    <bean class="com.lym.common.SpringExceptionRosolver"/>
+
     <!--包扫描-->
     <context:component-scan base-package="com.lym.controller"/>
     <context:component-scan base-package="com.lym.service"/>
