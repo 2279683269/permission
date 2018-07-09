@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.lym.exception.ParamException;
-import org.hibernate.validator.internal.xml.binding.GroupsType;
+import org.apache.commons.collections.MapUtils;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -80,7 +80,7 @@ public class BeanValidator {
 
     public static void check(Object param) throws ParamException {
         Map<String, String> map = BeanValidator.validateObject(param);
-        if (map != null && map.entrySet().size() > 0) {
+        if (MapUtils.isEmpty(map)) {
             throw new ParamException(map.toString());
         }
     }
