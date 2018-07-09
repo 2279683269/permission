@@ -1,6 +1,7 @@
 package com.lym.common;
 
 import com.lym.Enum.ExceptionEnum;
+import com.lym.exception.ParamException;
 import com.lym.exception.PermissionException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerExceptionResolver;
@@ -30,7 +31,7 @@ public class SpringExceptionRosolver implements HandlerExceptionResolver {
          * 方法2:事先规定,json请求以.json结尾,页面请求以.page结尾(当前项目规范)
          */
         if (url.endsWith(".json")) {
-            if (e instanceof PermissionException) {
+            if (e instanceof PermissionException || e instanceof ParamException) {
                 JsonData result = JsonData.fail(e.getMessage());
                 mv = new ModelAndView("jsonView", result.toMap());
             } else {
@@ -39,7 +40,7 @@ public class SpringExceptionRosolver implements HandlerExceptionResolver {
                 mv = new ModelAndView("jsonView", result.toMap());
             }
         } else if (url.endsWith(".page")) {
-            if (e instanceof PermissionException) {
+            if (e instanceof PermissionException || e instanceof ParamException) {
                 JsonData result = JsonData.fail(e.getMessage());
                 mv = new ModelAndView("exception", result.toMap());
             } else {
