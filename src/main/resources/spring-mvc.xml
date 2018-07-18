@@ -31,4 +31,8 @@
 
     <!-- Spirng上下文工具类注册,并且不能为懒加载 -->
     <bean class="com.lym.common.ApplicationContextHelper" lazy-init="false"/>
+
+    <mvc:interceptors>
+        <bean class="com.lym.common.HttpInterceptor"/>
+    </mvc:interceptors>
 </beans>

@@ -10,6 +10,7 @@ import com.lym.util.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,7 +42,7 @@ public class TestController {
 
     @RequestMapping("/validate.json")
     @ResponseBody
-    public JsonData validate(TestValidateRequestDTO testValidateRequestDTO) {
+    public JsonData validate(@RequestBody TestValidateRequestDTO testValidateRequestDTO) {
         log.info("validate");
         try {
             Map<String, String> map = BeanValidator.validateObject(testValidateRequestDTO);
