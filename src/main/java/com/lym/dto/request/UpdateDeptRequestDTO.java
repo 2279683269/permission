@@ -9,12 +9,12 @@ import javax.validation.constraints.NotNull;
 
 /**
  * @Auther: yanming.li@fangcang.com
- * @Date: 2018/7/18 10:55
+ * @Date: 2018/7/26 10:11
  * @Description:
  */
 @Data
 @ToString
-public class AddDeptRequestDTO {
+public class UpdateDeptRequestDTO {
 
     private Integer id;
 

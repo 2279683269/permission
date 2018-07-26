@@ -21,8 +21,8 @@ public class ScheduleTest {
         Date date = new Date();
         SimpleDateFormat sim = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateStr = sim.format(date);
-        System.out.println("这是spring定时器1，每五秒执行一次,当前时间：" + dateStr);
-        log.info("这是spring定时器1，每五秒执行一次,当前时间：" + dateStr);
+//        System.out.println("这是spring定时器1，每五秒执行一次,当前时间：" + dateStr);
+//        log.info("这是spring定时器1，每五秒执行一次,当前时间：" + dateStr);
     }
 
 }

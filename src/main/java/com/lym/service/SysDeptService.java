@@ -1,6 +1,7 @@
 package com.lym.service;
 
 import com.lym.dto.request.AddDeptRequestDTO;
+import com.lym.dto.request.UpdateDeptRequestDTO;
 
 /**
  * @Auther: yanming.li@fangcang.com
@@ -10,4 +11,7 @@ import com.lym.dto.request.AddDeptRequestDTO;
 public interface SysDeptService {
 
     public void save(AddDeptRequestDTO param);
+
+
+    public void update(UpdateDeptRequestDTO param);
 }
