@@ -1,6 +1,6 @@
 package com.lym.service;
 
-import com.lym.param.DeptParam;
+import com.lym.dto.request.AddDeptRequestDTO;
 
 /**
  * @Auther: yanming.li@fangcang.com
@@ -9,5 +9,5 @@ import com.lym.param.DeptParam;
  */
 public interface SysDeptService {
 
-    public void save(DeptParam param);
+    public void save(AddDeptRequestDTO param);
 }

@@ -1,9 +1,9 @@
 package com.lym.service.impl;
 
 import com.lym.dao.SysDeptMapper;
+import com.lym.dto.request.AddDeptRequestDTO;
 import com.lym.exception.ParamException;
 import com.lym.model.SysDept;
-import com.lym.param.DeptParam;
 import com.lym.service.SysDeptService;
 import com.lym.util.BeanValidator;
 import com.lym.util.LevelUtil;
@@ -24,8 +24,9 @@ public class SysDeptServiceImpl implements SysDeptService {
     private SysDeptMapper sysDeptMapper;
 
     @Override
-    public void save(DeptParam param) {
+    public void save(AddDeptRequestDTO param) {
         BeanValidator.check(param);
+        /** 同一级层级下不能存在相同名称的部门*/
         if (checkExist(param.getParentId(), param.getName(), param.getId())) {
             throw new ParamException("同一层级下存在相同名称的部门");
         }
@@ -36,7 +37,7 @@ public class SysDeptServiceImpl implements SysDeptService {
                 .remark(param.getRemark())
                 .build();
         sysDept.setLevel(LevelUtil.calculateLevel(getLevel(param.getParentId()), param.getParentId()));
-        sysDept.setOperateIp("system"); //TODO
+        sysDept.setOperator("system"); //TODO 先写死
         sysDept.setOperateIp("127.0.0.1"); //TODO
         sysDept.setOperateTime(new Date());
         sysDeptMapper.insertSelective(sysDept);
