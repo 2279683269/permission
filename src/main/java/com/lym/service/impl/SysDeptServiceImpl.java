@@ -66,7 +66,7 @@ public class SysDeptServiceImpl implements SysDeptService {
                 .remark(param.getRemark())
                 .build();
         after.setLevel(LevelUtil.calculateLevel(getLevel(param.getParentId()), param.getParentId()));
-        after.setOperator("system"); //TODO 先写死
+        after.setOperator("systemUpdate"); //TODO 先写死
         after.setOperateIp("127.0.0.1"); //TODO
         after.setOperateTime(new Date());
 

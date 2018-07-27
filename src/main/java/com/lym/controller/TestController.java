@@ -5,6 +5,7 @@ import com.lym.common.JsonData;
 import com.lym.dto.TestExcelStuDTO;
 import com.lym.dto.request.TestValidateRequestDTO;
 import com.lym.exception.PermissionException;
+import com.lym.model.SysUser;
 import com.lym.util.BeanValidator;
 import com.lym.util.ExcelUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -17,14 +18,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.OutputStream;
-import java.text.Format;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 /**
  * @Auther: yanming.li@fangcang.com
@@ -150,16 +148,30 @@ public class TestController {
      * @throws ParseException
      */
     public static void main(String[] args) throws ParseException {
-        Format f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2018-02-20 20:27:00");
-        Date today = new Date();
-        System.out.println("今天是:" + f.format(date));
+//        Format f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2018-02-20 20:27:00");
+//        Date today = new Date();
+//        System.out.println("今天是:" + f.format(date));
+//
+//        Calendar c = Calendar.getInstance();
+//        c.setTime(date);
+////        c.add(Calendar.DAY_OF_MONTH, 1);// 今天+1天
+//        c.add(Calendar.HOUR_OF_DAY, 240);
+//        Date tomorrow = c.getTime();
+//        System.out.println("下一个小时是:" + f.format(tomorrow));
+        SysUser user = null;
+        List<SysUser> users = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            user = new SysUser();
+            user.setUsername("test01");
+            users.add(user);
+        }
+        users.forEach(new Consumer<SysUser>() {
+            @Override
+            public void accept(SysUser sysUser) {
+                sysUser.setUsername("lym");
+            }
+        });
 
-        Calendar c = Calendar.getInstance();
-        c.setTime(date);
-//        c.add(Calendar.DAY_OF_MONTH, 1);// 今天+1天
-        c.add(Calendar.HOUR_OF_DAY, 240);
-        Date tomorrow = c.getTime();
-        System.out.println("下一个小时是:" + f.format(tomorrow));
     }
 }

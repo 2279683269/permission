@@ -42,12 +42,12 @@ public class SysDeptController {
     @ResponseBody
     public JsonData tree() {
         List<DeptLevelDTO> deptLevelList = sysTreeService.deptTree();
-        return JsonData.sucess();
+        return JsonData.sucess(deptLevelList);
     }
 
     @RequestMapping("/update.json")
     @ResponseBody
-    public JsonData updateDept(UpdateDeptRequestDTO param) {
+    public JsonData updateDept(@RequestBody UpdateDeptRequestDTO param) {
         sysDeptService.update(param);
         return JsonData.sucess();
     }
